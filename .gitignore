@@ -1,0 +1,24 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet packages
+packages/
+*.nupkg
+
+# Entity Framework/Database migration files (nếu có)
+*.sqlite
+*.db
+*.db-shm
+*.db-wal
+
+# Khác
+.DS_Store
+*.log
