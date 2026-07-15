@@ -1,13 +1,18 @@
 using UserService.Infrastructure.DependencyInjection;
+using UserService.WebApi.Common.Filters;
+using UserService.WebApi.Common.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<ResponseWrapperFilter>();
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddInfrastructureServices(builder.Configuration);
 
 var app = builder.Build();
@@ -22,7 +27,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+app.UseMiddleware<ExceptionMiddleware>();
 app.MapControllers();
 
 using (var scope = app.Services.CreateScope())
