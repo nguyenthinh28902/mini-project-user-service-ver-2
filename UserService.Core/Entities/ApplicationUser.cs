@@ -11,6 +11,7 @@ namespace UserService.Core.Entities
     {
         public string FullName { get; set; } = null!;
         public DateTime DateOfBirth { get; set; }
+        public string CountryCode { get; set; } = "VN";
 
     }
 }
