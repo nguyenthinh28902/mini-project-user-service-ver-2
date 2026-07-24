@@ -7,14 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DependencyInjection\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="16.2.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Project.Shared\Shared.Contracts\Shared.Contracts.csproj" />
     <ProjectReference Include="..\UserService.Core\UserService.Core.csproj" />
   </ItemGroup>
 

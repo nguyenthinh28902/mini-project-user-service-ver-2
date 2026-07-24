@@ -8,8 +8,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UserService.Application.Interfaces.Services;
+using UserService.Core.Abstractions.Persistence;
 using UserService.Core.Entities;
 using UserService.Infrastructure.Dbcontext;
+using UserService.Infrastructure.Persistence;
+using UserService.Infrastructure.Services;
 
 namespace UserService.Infrastructure.DependencyInjection
 {
@@ -32,6 +36,9 @@ namespace UserService.Infrastructure.DependencyInjection
             })
              .AddRoles<IdentityRole>()
              .AddEntityFrameworkStores<UserDbContext>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUserValidationService, UserValidationService>();
+            services.AddScoped<IUserManagerService, UserManagerService>();
 
             return services;
         }

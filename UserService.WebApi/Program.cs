@@ -1,6 +1,8 @@
+using Shared.Infrastructure.Web.Common.Filters;
+using Shared.Infrastructure.Web.Common.Middleware;
+using UserService.Application.DependencyInjection;
 using UserService.Infrastructure.DependencyInjection;
-using UserService.WebApi.Common.Filters;
-using UserService.WebApi.Common.Middleware;
+using UserService.WebApi.Common.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +14,10 @@ builder.Services.AddControllers(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerInfrastructure();
 
 builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddApplicationServices(builder.Configuration);
 
 var app = builder.Build();
 
